@@ -1,0 +1,67 @@
+.fav_Text{
+    font-size: 30px;
+    border-bottom: 3px solid #5fbcd3;
+    font-weight: bold;
+    margin: 15px auto 0 15px;
+}
+
+.fav_AddButton_L{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #F2CE68;
+    padding: 0px 5px;
+    border-radius: 5px;
+    border-color: #F2CE68;
+    color: #FFFFFF;
+    cursor: pointer;
+    float: left;
+    line-height: 20px;
+}
+
+.fav_RemoveButton_L{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #C48C37;
+    padding: 0px 5px;
+    border-radius: 5px;
+    border-color: #C48C37;
+    color: #FFFFFF;
+    cursor: pointer;
+    float: left;
+    line-height: 20px;
+}
+
+.fav_AddButton_D{
+    font-size: 140%;
+    font-weight: bold;
+    background-color: #F2CE68;
+    padding: 0px 5px;
+    width: calc(100% / 3);
+    height: 100%;
+    border-color: #F2CE68;
+    color: #444444;
+    cursor: pointer;
+}
+
+.fav_RemoveButton_D{
+    font-size: 140%;
+    font-weight: bold;
+    background-color: #C48C37;
+    padding: 0px 5px;
+    width: calc(100% / 3);
+    height: 100%;
+    border-color: #C48C37;
+    color: #444444;
+    cursor: pointer;
+}
+
+.fav_List{
+    align-items: center;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}

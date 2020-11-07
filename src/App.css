@@ -3,8 +3,19 @@
   display: flex;
   flex-direction: column;
   max-width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   min-width: 100vw;
+}
+
+@supports (-webkit-touch-callout: none){
+  .App{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    height: -webkit-fill-available;
+    min-width: 100vw;
+  }
 }
 
 #container {
@@ -13,6 +24,12 @@
   display: flex;
   flex-direction: column;
   background-color: rgb(238, 238, 238);
+}
+
+.td{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .leaflet-container {
@@ -29,6 +46,19 @@
   height: 10%;
 }
 
+.a{
+  display: flex;
+  max-width: 100%;
+  height: 100vh;
+  min-width: 100vw;
+}
+
+.loading-logo {
+  margin: auto;
+  width: 200px;
+  height: 200px;
+}
+
 .header-logo {
   width: 18%;
   max-height: 60px;
@@ -42,41 +72,30 @@
   justify-content: center;
 }
 
-.shopTab {
-  height: 10%;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  flex-grow: 1;
-  font-size: 4vw;
-  font-weight: bold;
+.menubtn{
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
 
-.shopList {
-  display: flex;
-  flex-grow: 12;
-  flex-direction: column;
-  flex-basis: 0;
-  overflow-y: scroll;
+.backbtn{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.shopNav{
+  border-right: 2px solid #CCCCCC;
 }
 
 div.none{
   background-color: #2c89A0;
   width: calc(100% / 3) ;
 }
-div.shop-none {
-  color: black;
-  width: calc(100% / 5) ;
-}
 
 div.current{
   background-color: #5fbcd3;
   width: calc(100% / 3) ;
-}
-div.shop-current {
-  color: orange;
-  width: calc(100% / 5) ;
 }
 
 .header-title {
@@ -94,4 +113,10 @@ div.shop-current {
   margin: 10px;
   background-color: #9bdff0;
   font-size: 5vw;
+}
+
+.mypage_radio{
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
 }

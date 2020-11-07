@@ -1,0 +1,323 @@
+.shop_Tab {
+    height: 10%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-grow: 1;
+    font-size: 4vw;
+    font-weight: bold;
+}
+
+div.shop-None {
+    color: black;
+    width: calc(100% / 5) ;
+    border-right: 2px solid #CCCCCC;
+}
+
+.shop-Current {
+    color: orange;
+    width: calc(100% / 5) ;
+    border-right: 2px solid #CCCCCC;
+}  
+
+/* 縦長のコンテンツをスクロールさせるためのflexbox */
+.content_List{
+    display: flex;
+    flex-grow: 12;
+    flex-direction: column;
+    flex-basis: 0;
+    overflow-y: scroll;
+}
+
+/* Shopページのお店を列挙するflexbox */
+.shop_List{
+    align-items: center;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    flex-grow: 12;
+    flex-basis: 0;
+    overflow-y: scroll;
+}
+
+.shop_Elements{
+    background-color: #FFFFFF;
+    padding: 0px 0;
+    margin: 5px 30px;
+    box-shadow: 2px 2px #CCCCCC;
+}
+
+.shop_Element{
+    position: relative;
+    width : calc(90% / 2);
+    margin: 5px 5px;
+    background-color: #FFFFFF;
+    padding: 0px 0;
+    box-shadow: 2px 2px #CCCCCC;
+}
+
+.shop_ImgField{
+    flex-basis: 22vw;
+}
+
+/*.shop_Image{
+    margin: 9px;
+    width: 20vw;
+    height: 20vw;
+}*/
+
+.shop_Image{
+    width: 100%;
+    height: 100%;
+}
+
+.shop_Info{
+    display: flex;
+    flex-direction: column;
+    margin: 3px;
+}
+
+.shop_Name{
+    position: absolute;
+    color: #FFFFFF;
+    background-color: #00000088;
+    border-bottom: solid 3px #FFFFFF;
+    top: 0;
+    left:0;
+    font-size: 3vw;
+    text-align: center;
+}
+
+/*.shop_Name{
+    color: darkorange;
+    font-size: 5vw;
+    text-align: center;
+}*/
+
+.shop_Detail{
+    position: absolute;
+    font-size: 2vh;
+    right: 0;
+    bottom: 1vh;
+    padding: 0px 5px;
+    height: 3vh;
+    background-color: #00000088;
+    color: #FFFFFF;
+    cursor: pointer;
+    float: left;
+    line-height: 20px;
+}
+
+.shop_Address{
+    color: darkgray;
+    font-size: 3vw;
+    text-align: center;
+}
+
+.shop_Intro{
+    font-size: 3vw;
+    text-align: center;
+    margin: 2px;
+}
+
+.shop_Tag{
+    color: lightslategray;    
+    font-size: 3vw;
+    text-align: center;
+}
+
+.shopD_Image{
+    width: 70vw;
+    height: 70vw;
+    margin: 0 auto;
+}
+
+.shopD_Intro{
+    background-color: #FFFFFF;
+    margin: 0 auto;
+    text-align: left;
+    width: 70vw;
+    padding: 40px;
+    font-size: 3vw;
+    line-height: 150%;
+    color: black;
+}
+
+.shopD_Tag{
+    font-size: 3vh;
+    text-align: right;
+    margin-left: 10px;
+    color: rgb(82, 82, 82);
+}
+
+.shopD_Tags{
+    font-size: 3vh;
+    margin: 10px auto;
+    text-align: left;
+}
+
+.shopD_NameText{
+    width: 100vw;
+    font-size: 4vh;
+    font-weight: bold;
+    border-bottom: 3px solid #123a44;
+    color: #297f94;
+    margin: 5px 0 0 0;
+    text-align: center;
+}
+
+.shopD_Button{
+    width: calc(100% / 3);
+    font-size: 3vw;
+    height: 3vh;
+    text-align: center;
+}
+
+.shopD_InfoTitle{
+    width: 80%;
+    font-size: 4vh;
+    font-weight: bold;
+    border-bottom: 3px solid #123a44;
+    color: #297f94;
+    margin: 25px auto 0px auto;
+    text-align: center;
+}
+
+.shopD_InfoText{
+    width: 80%;
+    font-size: 3vh;
+    font-weight: bold;
+    color:#000000;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.shopD_Table{
+    width: 80%;
+    background-color: white;
+    text-align: center;
+    margin: 30px auto 0 auto;
+    font-size: 3vw;
+    font-weight: bold;
+    border: solid 3px #297f94;
+}
+
+.shopD_Table tr td:nth-of-type(1){
+    width: 15%;
+    text-align: center;
+    margin: 15px 10px;
+    padding: 15px auto;
+    background-color: #afdbe6;
+    border: solid 2px #AAAAAA;
+    line-height: 150%;
+    border-collapse: collapse;
+}
+
+.shopD_Table tr td:nth-of-type(2){
+    width: 65%;
+    text-align: center;
+    margin: 15px auto;
+    padding: 10px;
+    background-color: #FFFFFF;
+    border-bottom: solid 2px #AAAAAA;
+    border-top: solid 2px #AAAAAA;
+    border-left: solid 2px #AAAAAA;
+    border-right: solid 2px #AAAAAA;
+    line-height: 150%;
+    border-collapse: collapse;
+}
+
+.shopD_NoReview{
+    font-size: 3vw;
+    font-weight: bold;
+    border-bottom: solid 3px #def8ff;
+    margin: auto;
+}
+
+.shopD_Reviews{
+    display: flex;
+    white-space: nowrap;
+    flex-direction: row;
+    overflow-x: scroll;
+    background: #d6e0ee;
+    flex-grow: 1;
+    flex-basis: 0;
+    min-height: 40vh;
+    min-width: 90vw;
+    margin: 10px;
+}
+
+.shopD_ReviewItems{
+    margin: 10px 5px 10px 5px;
+    background: #FFFFFF;
+    min-width: 50vw;
+    width: 50vw;
+    min-height: 35vh;
+    border: solid 3px #FFFFFF;
+    border-radius: 5px;
+}
+
+.shopD_ReviewItems::after{
+    width: 10px;
+    height: 1px;
+    content: '';
+}
+
+.shopD_ReviewTitle{
+    font-size: 2vh;
+    font-weight: bold;
+    border-bottom: solid 3px #777777;
+    text-align: center;
+    margin: 0 auto;
+    width: 45vw;
+    min-width: 45vw;
+    max-width: 45vw;
+    height: 5vh;
+    white-space: normal;
+}
+
+.shopD_ReviewText{
+    font-size: 2vh;
+    text-align: left;
+    margin: 5px auto 5px auto;
+    width: 45vw;
+    max-width: 45vw;
+    min-width: 45vw;
+    height: 28vh;
+    white-space: normal;
+}
+
+.shopD_Buttons {
+    height: 1vh;
+    flex-direction: row;
+    align-items: center;
+    display: flex;
+    flex-grow: 1;
+}
+
+.shopD_MapButton{ 
+    font-size: 140%;
+    font-weight: bold;
+    background-color: #6a91cc;
+    padding: 0px 5px;
+    width: calc(100% / 3);
+    height: 100%;
+    border-color: #6a91cc;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.shopD_ReviewButton{
+    font-size: 140%;
+    font-weight: bold;
+    background-color: #e68aa8;
+    padding: 0px 5px;
+    width: calc(100% / 3);
+    height: 100%;
+    border-color: #e68aa8;
+    color: #FFFFFF;
+    cursor: pointer;
+}

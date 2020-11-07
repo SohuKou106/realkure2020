@@ -1,12 +1,80 @@
-.navCamera {
+.map_navCamera {
   position: absolute;
-  bottom: 15vh;
+  bottom: 10vh;
   right: 4vw;
   z-index: 1000;
 }
-.navCameraImage {
+.map_navCameraImage {
   width: 80%;
   height: 80%;
   max-height: 100px;
   max-width: 100px;
 }
+
+.map_RootButton{
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  background-color: #1E65D0;
+  padding: 0px 5px;
+  border-radius: 5px;
+  border-color: #1E65D0;
+  color: #FFFFFF;
+  cursor: pointer;
+  float: left;
+  line-height: 20px;
+}
+
+.popup_ImgField{
+  position: relative;
+}
+
+.popup_Image{
+  width: 30vh;
+  height: 30vh;
+}
+
+.popup_Name{
+  position: absolute;
+  color: white;
+  font-size: 3vh;
+  bottom: 10px;
+  background-color: #00000088;
+  left: 0;
+}
+
+.popup_Tag{
+  position: absolute;
+  color: lightgray;
+  font-size: 2vh;
+  left: 0;  
+}
+
+.sideBar {
+  position: absolute;
+  z-index: 1001;
+  top: 60px;
+  right: 0;
+  display: block;
+  width: 40vw;
+  background-color: #ffffffc4;
+}
+
+.sideBar_Marker{
+  width: 50%;
+  height: auto;
+  max-height: 50px;
+  max-width: 50px;
+  margin: 0 10px 0 10px;
+}
+
+/*.sideBar tr td:nth-of-type(1){
+  text-align: center;
+}
+
+.sideBar tr td:nth-of-type(2){
+  width: 65%;
+  text-align: center;
+  margin: 10px auto;
+  padding: 10px;
+}*/

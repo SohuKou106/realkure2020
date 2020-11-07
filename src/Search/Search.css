@@ -1,0 +1,68 @@
+.search_MenuText{
+    font-size: 30px;
+    border-bottom: 3px solid #5fbcd3;
+    font-weight: bold;
+    margin: 15px auto 0 15px;
+}
+  
+.search_Form {
+    flex-direction: row;
+    height: 72px;
+    line-height: 2;
+    margin-top: auto;
+    padding: 5px 8px;
+    border-radius: 6px;
+    font-size: 24px;  
+}
+
+.search_TextBox{
+    width: 70%;
+    height: 5vh;
+    padding: 5px 8px;
+    border-radius: 6px;
+    border-top: 1px solid #75BAD0;
+    border-left: 1px solid #75BAD0;
+    border-right: 2px solid #75BAD0;
+    border-bottom: 2px solid #75BAD0;  
+    background-color: #FFFFFF;
+    font-size: 24px;
+}
+
+.search_TextSearchBtn {
+    width: 20%;
+    height: 5vh;
+    margin: 0 5px;
+    padding: 5px 8px;
+    border-radius: 6px;
+    border-top: 1px solid #75BAD0;
+    border-left: 1px solid #75BAD0;
+    border-right: 2px solid #75BAD0;
+    border-bottom: 2px solid #75BAD0; 
+    background-color: #75BAD0;
+    font-size: 24px;
+}
+
+.search_RadioBtn {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.search_RadioBtnBox{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.search_HashSearchBtn {
+    width: 50%;
+    background-color: #97d1e4;
+    font-size: 18px;
+}
+
+.search_RecList{
+    align-items: center;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
