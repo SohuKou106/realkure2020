@@ -147,7 +147,7 @@ class Home extends React.Component {
 
     var container
     if(this.state.loading){
-      container = <div className='a'>
+      container = <div className='loading-container'>
                     <img src={LoadingLogo} alt="" className="loading-logo"></img>
                   </div>
     }

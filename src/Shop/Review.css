@@ -1,3 +1,11 @@
+.review_List{
+    display: flex;
+    flex-grow: 12;
+    flex-direction: column;
+    flex-basis: 0;
+}
+
+
 .review_titleText{
     width: 40vw;
     font-size: 3vh;

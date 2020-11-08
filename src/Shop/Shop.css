@@ -141,7 +141,7 @@ div.shop-None {
     text-align: left;
     width: 70vw;
     padding: 40px;
-    font-size: 3vw;
+    font-size: 4vw;
     line-height: 150%;
     color: black;
 }
@@ -166,13 +166,6 @@ div.shop-None {
     border-bottom: 3px solid #123a44;
     color: #297f94;
     margin: 5px 0 0 0;
-    text-align: center;
-}
-
-.shopD_Button{
-    width: calc(100% / 3);
-    font-size: 3vw;
-    height: 3vh;
     text-align: center;
 }
 
@@ -292,32 +285,33 @@ div.shop-None {
 
 .shopD_Buttons {
     height: 1vh;
+    min-height: 1vh;
     flex-direction: row;
-    align-items: center;
+    align-items: stretch;
     display: flex;
     flex-grow: 1;
 }
 
 .shopD_MapButton{ 
-    font-size: 140%;
+    font-size: 4vw;
     font-weight: bold;
     background-color: #6a91cc;
     padding: 0px 5px;
     width: calc(100% / 3);
-    height: 100%;
     border-color: #6a91cc;
+    margin: 0;
     color: #FFFFFF;
     cursor: pointer;
 }
 
 .shopD_ReviewButton{
-    font-size: 140%;
+    font-size: 4vw;
     font-weight: bold;
     background-color: #e68aa8;
     padding: 0px 5px;
     width: calc(100% / 3);
-    height: 100%;
     border-color: #e68aa8;
+    margin: 0;
     color: #FFFFFF;
     cursor: pointer;
 }

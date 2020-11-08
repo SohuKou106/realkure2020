@@ -6,6 +6,17 @@ import {CookiesProvider} from 'react-cookie';
 
 //import * as serviceWorker from './serviceWorker';
 
+//ビューポートの値を取得（スマホのアドレスバーを含まない)
+let vh = window.innerHeight * 0.01;
+//css変数(--vh)に登録する
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+//ウィンドウがリサイズされた場合 --vhを更新
+window.addEventListener('resize', () => {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+})
+
 ReactDOM.render(<CookiesProvider><App /></CookiesProvider>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

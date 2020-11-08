@@ -38,19 +38,6 @@ export class WriteReview extends React.Component{
             text: text,
         })
         this.props.movePage({Component: ShopDetail})
-
-        /* //axiosによるデータ送信
-        const ROOT_ENDPOINT = "http://localhost:3011";//'http://192.168.3.6:3011'; //'localhost:3001';
-        axios.post(ROOT_ENDPOINT + "/review/create",
-        {
-            shop_id: this.props.review_id,
-            title: title,
-            text: text
-        }).then(() => {
-            console.log("post success!")
-            this.props.movePage({Component: ShopDetail})
-        })
-        */
     }
 
 

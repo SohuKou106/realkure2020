@@ -34,24 +34,24 @@
 }
 
 .fav_AddButton_D{
-    font-size: 140%;
+    font-size: 4vw;
     font-weight: bold;
     background-color: #F2CE68;
     padding: 0px 5px;
+    margin: 0;
     width: calc(100% / 3);
-    height: 100%;
     border-color: #F2CE68;
     color: #444444;
     cursor: pointer;
 }
 
 .fav_RemoveButton_D{
-    font-size: 140%;
+    font-size: 4vw;
     font-weight: bold;
     background-color: #C48C37;
     padding: 0px 5px;
+    margin: 0;
     width: calc(100% / 3);
-    height: 100%;
     border-color: #C48C37;
     color: #444444;
     cursor: pointer;
