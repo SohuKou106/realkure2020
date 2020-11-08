@@ -27,7 +27,8 @@ export class LMap extends React.Component {
     super(props)
     this.state = {
       position: [34.244659, 132.557402], zoom: 15, mobile_lat: null, mobile_lng: null,
-      rectangle: [[34.194218, 132.495934], [34.268731, 132.651786]],
+      rectangle: [[34.212417, 132.537537], [34.266180, 132.588548]],
+      //rectangle: [[34.194218, 132.495934], [34.268731, 132.651786]],
       route1: [
         [34.244798, 132.557611],
         [34.242135,	132.55538],
@@ -318,12 +319,12 @@ export class LMap extends React.Component {
         <Map ref='map'
              onzoomend={this.zoomEnd.bind(this)}
              ondragend={this.dragEnd.bind(this)}
-             center={this.props.mapStatus.center} zoom={this.props.mapStatus.zoom} minZoom={14} maxZoom={18} maxBounds={this.state.rectangle}>                    
+             center={this.props.mapStatus.center} zoom={this.props.mapStatus.zoom} minZoom={15} maxZoom={18} maxBounds={this.state.rectangle}>                    
           {Marker1}
           {Marker2}
           {shopRouting}
           <TileLayer
-            url="maptiles/{z}/{x}/{y}.png"
+            url="maptiles_2020/{z}/{x}/{y}.png"
             attribution="&copy; <a href=&quot;http://www.thunderforest.com/transport/&quot;>Gravitystorm</a> / map data <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
           />
           {markers_rest.map((marker, index) => (
