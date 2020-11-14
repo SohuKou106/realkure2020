@@ -7,8 +7,8 @@
 
 .fav_AddButton_L{
     position: absolute;
-    top: 5px;
-    right: 5px;
+    bottom: 5px;
+    left: 5px;
     background-color: #F2CE68;
     padding: 0px 5px;
     border-radius: 5px;
@@ -21,8 +21,8 @@
 
 .fav_RemoveButton_L{
     position: absolute;
-    top: 5px;
-    right: 5px;
+    bottom: 5px;
+    left: 5px;
     background-color: #C48C37;
     padding: 0px 5px;
     border-radius: 5px;

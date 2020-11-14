@@ -27,7 +27,7 @@ export class LMap extends React.Component {
     super(props)
     this.state = {
       position: [34.244659, 132.557402], zoom: 15, mobile_lat: null, mobile_lng: null,
-      rectangle: [[34.212417, 132.537537], [34.266180, 132.588548]],
+      rectangle: [[34.212417, 132.537537], [34.267180, 132.588548]],
       //rectangle: [[34.194218, 132.495934], [34.268731, 132.651786]],
       route1: [
         [34.244798, 132.557611],
@@ -188,6 +188,10 @@ export class LMap extends React.Component {
     this.props.movePage({shop_data: shop_data, Component: ShopDetail})
   }
 
+  mapClicked(){
+    this.setState({menuShow:false})
+  }
+
   zoomEnd(e){ 
     var zoom = e.target.getZoom()
     this.setState({zoom: zoom})
@@ -294,29 +298,27 @@ export class LMap extends React.Component {
           var tag = "#" + this.props.shop_data.tag1
         }
         
-        //FavButtonの下
-        //<button onClick={this.showRoot.bind(this, {coordinates:{lat:this.props.shop_data.lat, lng:this.props.shop_data.lng}, id:this.props.shop_data.id})} className="map_RootButton">{l[langNum].showRoot}</button>
         shopClickedPopup =       
         <Popup position={[this.props.shop_data.lat, this.props.shop_data.lng]}>          
           <div className='popup_ImgField'>
             <div className='popup_Name'>{this.props.shop_data.name}</div>
-            <div className='popup_Tag'>{tag}</div>
             <img src={'./images/stores/' + `${this.props.shop_data.id}` + '.jpg'} className='popup_Image' onClick={() => this.moveShopDetail(this.props.shop_data)} onError={e => e.target.src = noimage} />            
             <div>
               <FavButton favChange={this.favChange.bind(this)} shopId={this.props.shop_data.id} favId={this.props.favId} page='LMap'/>
             </div>
-          </div>          
+            <div className="shop_Detail" onClick={() => this.moveShopDetail(this.props.shop_data)}>{l[langNum].viewDetail}</div>
+          </div>
+          <div className='popup_Tag'>{tag}</div>
         </Popup>
       }
     }
 
-    //FavButtonの下
-    //<button onClick={this.showRoot.bind(this, marker)} className="map_RootButton">{l[langNum].showRoot}</button>
     return (
       <div id='container'>
         <div className="menubtn">{searchButton}</div>
         <div className='sideBar'>{sidebar}</div>
         <Map ref='map'
+             onClick={this.mapClicked.bind(this)}
              onzoomend={this.zoomEnd.bind(this)}
              ondragend={this.dragEnd.bind(this)}
              center={this.props.mapStatus.center} zoom={this.props.mapStatus.zoom} minZoom={15} maxZoom={18} maxBounds={this.state.rectangle}>                    
@@ -327,95 +329,170 @@ export class LMap extends React.Component {
             url="maptiles_2020/{z}/{x}/{y}.png"
             attribution="&copy; <a href=&quot;http://www.thunderforest.com/transport/&quot;>Gravitystorm</a> / map data <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
           />
-          {markers_rest.map((marker, index) => (
-            <Marker key={index} position={[marker.lat, marker.lng]} icon={restaurantPoint}>
-             <Popup>          
-              <div className='popup_ImgField'>
-                <div className='popup_Name'>{marker.name}</div>
-                <div className='popup_Tag'>{tag}</div>
-                <img src={marker.img} className='popup_Image' onClick={() => this.moveShopDetail(marker)} onError={e => e.target.src = noimage} />            
-                <div>
-                  <FavButton favChange={this.favChange.bind(this)}
-                             shopId={marker.id}
-                             favId={this.props.favId}
-                             page='LMap'/>
-                </div>
-              </div>          
-            </Popup>
-          </Marker>
-          ))}         
-
-          {markers_cafe.map((marker, index) => (
-            <Marker key={index} position={[marker.lat, marker.lng]} icon={cafePoint}>
-              <Popup>          
-                <div className='popup_ImgField'>
-                  <div className='popup_Name'>{marker.name}</div>
-                  <div className='popup_Tag'>{tag}</div>
-                  <img src={marker.img} className='popup_Image' onClick={() => this.moveShopDetail(marker)} onError={e => e.target.src = noimage} />            
-                  <div>
-                  <FavButton favChange={this.favChange.bind(this)}
-                             shopId={marker.id}
-                             favId={this.props.favId}
-                             page='LMap'/>
+          {markers_rest.map((marker, index) => {
+            if(marker.tag2 != null){
+              if(marker.tag3 != null){
+                var tag = "#" + marker.tag1 + "  #" + marker.tag2 + "  #" + marker.tag3    
+              }
+              else{
+                var tag = "#" + marker.tag1 + "  #" + marker.tag2
+              }  
+            }
+            else{
+              var tag = "#" + marker.tag1
+            }
+            return (
+              <Marker key={index} position={[marker.lat, marker.lng]} icon={restaurantPoint}>
+                <Popup>          
+                  <div className='popup_ImgField'>
+                    <div className='popup_Name'>{marker.name}</div>
+                    <img src={marker.img} className='popup_Image' onClick={() => this.moveShopDetail(marker)} onError={e => e.target.src = noimage} />            
+                    <div>
+                      <FavButton favChange={this.favChange.bind(this)}
+                                  shopId={marker.id}
+                                  favId={this.props.favId}
+                                  page='LMap'/>
+                    </div>
+                    <div className="shop_Detail" onClick={() => this.moveShopDetail(marker)}>{l[langNum].viewDetail}</div>
                   </div>
-                </div>          
-              </Popup>
-            </Marker>
-          ))}    
-
-          {markers_bar.map((marker, index) => (
-            <Marker key={index} position={[marker.lat, marker.lng]} icon={barPoint}>
-              <Popup>          
-                <div className='popup_ImgField'>
-                  <div className='popup_Name'>{marker.name}</div>
                   <div className='popup_Tag'>{tag}</div>
-                  <img src={marker.img} className='popup_Image' onClick={() => this.moveShopDetail(marker)} onError={e => e.target.src = noimage} />            
-                  <div>
-                  <FavButton favChange={this.favChange.bind(this)}
-                             shopId={marker.id}
-                             favId={this.props.favId}
-                             page='LMap'/>
-                  </div>
-                </div>          
-              </Popup>
-            </Marker>
-          ))}
+                </Popup>
+              </Marker>
+              )
+            }
+          )}         
 
-          {markers_hotel.map((marker, index) => (
-            <Marker key={index} position={[marker.lat, marker.lng]} icon={hotelPoint}>
-              <Popup>          
-                <div className='popup_ImgField'>
-                  <div className='popup_Name'>{marker.name}</div>
-                  <div className='popup_Tag'>{tag}</div>
-                  <img src={marker.img} className='popup_Image' onClick={() => this.moveShopDetail(marker)} onError={e => e.target.src = noimage} />            
-                  <div>
-                    <FavButton favChange={this.favChange.bind(this)}
-                               shopId={marker.id}
-                               favId={this.props.favId}
-                               page='LMap'/>
+          {markers_cafe.map((marker, index) => {
+            if(marker.tag2 != null){
+              if(marker.tag3 != null){
+                var tag = "#" + marker.tag1 + "  #" + marker.tag2 + "  #" + marker.tag3    
+              }
+              else{
+                var tag = "#" + marker.tag1 + "  #" + marker.tag2
+              }  
+            }
+            else{
+              var tag = "#" + marker.tag1
+            }
+            return (
+              <Marker key={index} position={[marker.lat, marker.lng]} icon={cafePoint}>
+                <Popup>          
+                  <div className='popup_ImgField'>
+                    <div className='popup_Name'>{marker.name}</div>
+                    <img src={marker.img} className='popup_Image' onClick={() => this.moveShopDetail(marker)} onError={e => e.target.src = noimage} />            
+                    <div>
+                      <FavButton favChange={this.favChange.bind(this)}
+                                  shopId={marker.id}
+                                  favId={this.props.favId}
+                                  page='LMap'/>
+                    </div>
+                    <div className="shop_Detail" onClick={() => this.moveShopDetail(marker)}>{l[langNum].viewDetail}</div>
                   </div>
-                </div>          
-              </Popup>
-            </Marker>
-          ))}
+                  <div className='popup_Tag'>{tag}</div>
+                </Popup>
+              </Marker>
+              )
+            }
+          )}    
 
-          {markers_other.map((marker, index) => (
-            <Marker key={index} position={[marker.lat, marker.lng]} icon={otherPoint}>
-              <Popup>          
-                <div className='popup_ImgField'>
-                  <div className='popup_Name'>{marker.name}</div>
-                  <div className='popup_Tag'>{tag}</div>
-                  <img src={marker.img} className='popup_Image' onClick={() => this.moveShopDetail(marker)} onError={e => e.target.src = noimage} />            
-                  <div>
-                  <FavButton favChange={this.favChange.bind(this)}
-                             shopId={marker.id}
-                             favId={this.props.favId}
-                             page='LMap'/>
+          {markers_bar.map((marker, index) => {
+            if(marker.tag2 != null){
+              if(marker.tag3 != null){
+                var tag = "#" + marker.tag1 + "  #" + marker.tag2 + "  #" + marker.tag3    
+              }
+              else{
+                var tag = "#" + marker.tag1 + "  #" + marker.tag2
+              }  
+            }
+            else{
+              var tag = "#" + marker.tag1
+            }
+            return (
+              <Marker key={index} position={[marker.lat, marker.lng]} icon={barPoint}>
+                <Popup>          
+                  <div className='popup_ImgField'>
+                    <div className='popup_Name'>{marker.name}</div>
+                    <img src={marker.img} className='popup_Image' onClick={() => this.moveShopDetail(marker)} onError={e => e.target.src = noimage} />            
+                    <div>
+                      <FavButton favChange={this.favChange.bind(this)}
+                                  shopId={marker.id}
+                                  favId={this.props.favId}
+                                  page='LMap'/>
+                    </div>
+                    <div className="shop_Detail" onClick={() => this.moveShopDetail(marker)}>{l[langNum].viewDetail}</div>
                   </div>
-                </div>          
-              </Popup>
-            </Marker>
-          ))}
+                  <div className='popup_Tag'>{tag}</div>
+                </Popup>
+              </Marker>
+              )
+            }
+          )}
+
+          {markers_hotel.map((marker, index) => {
+            if(marker.tag2 != null){
+              if(marker.tag3 != null){
+                var tag = "#" + marker.tag1 + "  #" + marker.tag2 + "  #" + marker.tag3    
+              }
+              else{
+                var tag = "#" + marker.tag1 + "  #" + marker.tag2
+              }  
+            }
+            else{
+              var tag = "#" + marker.tag1
+            }
+            return (
+              <Marker key={index} position={[marker.lat, marker.lng]} icon={hotelPoint}>
+                <Popup>          
+                  <div className='popup_ImgField'>
+                    <div className='popup_Name'>{marker.name}</div>
+                    <img src={marker.img} className='popup_Image' onClick={() => this.moveShopDetail(marker)} onError={e => e.target.src = noimage} />            
+                    <div>
+                      <FavButton favChange={this.favChange.bind(this)}
+                                  shopId={marker.id}
+                                  favId={this.props.favId}
+                                  page='LMap'/>
+                    </div>
+                    <div className="shop_Detail" onClick={() => this.moveShopDetail(marker)}>{l[langNum].viewDetail}</div>
+                  </div>
+                  <div className='popup_Tag'>{tag}</div>
+                </Popup>
+              </Marker>
+              )
+            }
+          )}
+
+          {markers_other.map((marker, index) => {
+            if(marker.tag2 != null){
+              if(marker.tag3 != null){
+                var tag = "#" + marker.tag1 + "  #" + marker.tag2 + "  #" + marker.tag3    
+              }
+              else{
+                var tag = "#" + marker.tag1 + "  #" + marker.tag2
+              }  
+            }
+            else{
+              var tag = "#" + marker.tag1
+            }
+            return (
+              <Marker key={index} position={[marker.lat, marker.lng]} icon={otherPoint}>
+                <Popup>          
+                  <div className='popup_ImgField'>
+                    <div className='popup_Name'>{marker.name}</div>
+                    <img src={marker.img} className='popup_Image' onClick={() => this.moveShopDetail(marker)} onError={e => e.target.src = noimage} />            
+                    <div>
+                      <FavButton favChange={this.favChange.bind(this)}
+                                  shopId={marker.id}
+                                  favId={this.props.favId}
+                                  page='LMap'/>
+                    </div>
+                    <div className="shop_Detail" onClick={() => this.moveShopDetail(marker)}>{l[langNum].viewDetail}</div>
+                  </div>
+                  <div className='popup_Tag'>{tag}</div>
+                </Popup>
+              </Marker>
+              )
+            }
+          )}
           {shopClickedPopup}
         </Map> 
         <div className='map_navCamera' onClick={this.bindmenuClicked}><img src={MenuLogo} alt="" className="map_navCameraImage"></img></div>

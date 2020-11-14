@@ -10,8 +10,8 @@ import {
 } from 'react-router-dom'
 import Cookies from 'js-cookie'
 import './App.css';
-import LoadingLogo from './images/loading.png'
-import MainLogo from './images/newlogo_.png'
+import LoadingLogo from './images/loading.gif'
+import MainLogo from './images/newlogo.png'
 import MapLogo from './images/map.png'
 import ShopLogo from './images/shop.png'
 import MyPageLogo from './images/mypage.png'

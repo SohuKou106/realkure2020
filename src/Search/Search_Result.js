@@ -26,21 +26,21 @@ export class Search_Result extends React.Component{
       this.props.movePage({Component: Search})
     }
 
-    shopPosition (e) { 
+    shopDetail (e) { 
       const shop_data = {
-        lat: Number(e.currentTarget.getAttribute('lat')),
-        lng: Number(e.currentTarget.getAttribute('lng')),
-        id: Number(e.currentTarget.getAttribute('id')),
-        name: e.currentTarget.getAttribute('name'),
-        address1: e.currentTarget.getAttribute('address1'),
-        address2: e.currentTarget.getAttribute('address2'),
-        intro: e.currentTarget.getAttribute('intro'),
-        tag1: e.currentTarget.getAttribute('tag1'),
-        tag2: e.currentTarget.getAttribute('tag2'),
-        tag3: e.currentTarget.getAttribute('tag3'),
-        week: e.currentTarget.getAttribute('week'),
-        holi: e.currentTarget.getAttribute('holi'),
-        reg_holi: e.currentTarget.getAttribute('reg_holi'),
+        lat: e.latitude,
+        lng: e.longitude,
+        id: e.id,
+        name: e.name,
+        address1: e.address1,
+        address2: e.address2,
+        intro: e.intro,
+        tag1: e.tag1,
+        tag2: e.tag2,
+        tag3: e.tag3,
+        week: e.hours_weekday,
+        holi: e.hours_holiday,
+        reg_holi: e.regular_holiday,
       } 
       this.props.before_page.set("Search_Result")
       this.props.movePage({shop_data: shop_data, Component: ShopDetail})
@@ -72,8 +72,10 @@ export class Search_Result extends React.Component{
                 </div>
                 <div className="search_MenuText">{l[langNum].sResult}</div>
                 {noResText}
-                <div className="fav_List">
-                  {list}
+                <div className="content_List">
+                  <div className="fav_List">
+                    {list}
+                  </div>
                 </div>
             </div>
         )

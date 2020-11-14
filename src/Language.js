@@ -25,7 +25,7 @@ export var l = [
         d_regholi: "定休日",
         viewDetail: "詳細を見る >>",
         nofavs: "お気に入りに追加したスポットはありません。",
-        favShops: "お気に入りに追加したスポット",
+        favShops: "お気に入り",
         fav: "お気に入り",
         rem: "お気に入り解除",
         writeReview: "レビューを書く",

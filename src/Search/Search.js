@@ -9,6 +9,7 @@ import {l} from '../Language'
 import {langNum} from '../MyPage'
 import {ShopDetail} from '../Shop/ShopDetail'
 import {Search_Result} from './Search_Result'
+import search from '../images/search.png'
 
 export class Search extends React.Component {
     constructor(props){
@@ -20,7 +21,7 @@ export class Search extends React.Component {
             cafe_list: [],
             bar_list: [],
             res:[],
-            searchTextButton : <button className="search_TextSearchBtn" disabled>{l[langNum].search}</button>,
+            searchTextButton : <button className="search_TextSearchBtn_dark" disabled><img src={search} alt="" className="searchBtn_Image"/></button>,
             searchText: null,
         }
         this.props.movePage(this.state)
@@ -59,10 +60,10 @@ export class Search extends React.Component {
     textChanged(e){
       var btn
       if(e.target.value){
-        btn = <button className="search_TextSearchBtn" onClick={this.searchWithText.bind(this)}>{l[langNum].search}</button>
+        btn = <button className="search_TextSearchBtn" onClick={this.searchWithText.bind(this)}><img src={search} alt="" className="searchBtn_Image"/></button>
       }
       else{
-        btn = <button className="search_TextSearchBtn" disabled>{l[langNum].search}</button>
+        btn = <button className="search_TextSearchBtn_dark" disabled><img src={search} alt="" className="searchBtn_Image"/></button>
       }
       this.setState({searchTextButton: btn, searchText: e.target.value})
     }

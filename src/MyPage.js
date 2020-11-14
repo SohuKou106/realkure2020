@@ -14,10 +14,7 @@ export class MyPage extends React.Component {
       this.state = {
           radioCheck: [true, false]
       }
-      this.props.firebaseRef
-      this.props.posts
       this.props.movePage(this.state)
-      //this.sightseeingHandler = this.sightseeingHandler.bind(this);
     }
 
     componentWillMount(){
@@ -55,12 +52,6 @@ export class MyPage extends React.Component {
                 radio[i] = false
             }
         }
-        this.props.firebaseRef.push({
-            shopid: 1,
-            title:"これはMyPageからのデータです。",
-            text:"そしてこれは，テキストです。",
-        })
-
         this.setState({radioCheck:radio})
     }
 

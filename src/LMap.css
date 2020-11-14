@@ -1,12 +1,12 @@
 .map_navCamera {
   position: absolute;
-  bottom: 10vh;
+  bottom: 9vh;
   right: 4vw;
   z-index: 1000;
 }
 .map_navCameraImage {
-  width: 80%;
-  height: 80%;
+  width: 60%;
+  height: 60%;
   max-height: 100px;
   max-width: 100px;
 }
@@ -38,22 +38,20 @@
   position: absolute;
   color: white;
   font-size: 3vh;
-  bottom: 10px;
+  top: 0px;
   background-color: #00000088;
   left: 0;
 }
 
 .popup_Tag{
-  position: absolute;
-  color: lightgray;
-  font-size: 2vh;
-  left: 0;  
+  color: rgb(113, 113, 113);
+  font-size: 2vh; 
 }
 
 .sideBar {
   position: absolute;
   z-index: 1001;
-  top: 60px;
+  top: 40px;
   right: 0;
   display: block;
   width: 60vw;
@@ -61,7 +59,7 @@
 }
 
 .sideBar_Marker{
-  width: 50%;
+  width: 40%;
   height: auto;
   max-height: 50px;
   max-width: 50px;
