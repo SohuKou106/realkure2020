@@ -16,6 +16,8 @@ export class WriteReview extends React.Component{
             guide_Title: <div className='review_titleText'>{l[langNum].title + "(0/30)"}</div>,
             guide_Text: <div className='review_titleText'>{l[langNum].review + "(0/360)"}</div>,
             postButton: <button className='review_Button' onClick={this.submitReview.bind(this)} disabled>{l[langNum].send}</button>,
+            check: false,
+            checkWindow: null,
         }
         this.props.review_id
         this.props.movePage(this.state)
@@ -25,6 +27,24 @@ export class WriteReview extends React.Component{
 
     backPage(e){
         this.props.movePage({Component: ShopDetail})
+    }
+
+    checkSend(){
+        var checkwindow = 
+            <div className='review_CheckField'>
+                <div className='review_CheckWindow'>
+                    <div className='review_CheckText'>投稿します。よろしいですか？</div>
+                    <div>
+                        <button className='review_CheckButton' onClick={this.submitReview.bind(this)}>OK</button>
+                        <button className='review_CheckButton' onClick={this.cancel.bind(this)}>Cancel</button>
+                    </div>
+                </div>
+            </div>
+        this.setState({checkWindow: checkwindow})
+    }
+
+    cancel(){
+        this.setState({checkWindow: null})
     }
 
     submitReview(e){
@@ -52,7 +72,8 @@ export class WriteReview extends React.Component{
         if(textType=="titleText"){
             guide_title = <div className='review_titleText'>{l[langNum].title + "(" + String(text).length + "/30)"}</div>
             if(text && this.state.review_text && String(text).length <= title_max && this.state.review_text.length <= text_max){
-                btn = <button className='review_Button' onClick={this.submitReview.bind(this)}>{l[langNum].send}</button>
+                //btn = <button className='review_Button' onClick={this.submitReview.bind(this)}>{l[langNum].send}</button>
+                btn = <button className='review_Button' onClick={this.checkSend.bind(this)}>{l[langNum].send}</button>
             }
             else {
                 btn = <button className='review_Button' onClick={this.submitReview.bind(this)} disabled>{l[langNum].send}</button>
@@ -63,31 +84,35 @@ export class WriteReview extends React.Component{
         if(textType=="reviewText"){
             guide_text = <div className='review_titleText'>{l[langNum].review + "(" + String(text).length + "/360)"}</div>
             if(text && this.state.review_title && this.state.review_title.length <= title_max && String(text).length <= text_max){
-                btn = <button className='review_Button' onClick={this.submitReview.bind(this)}>{l[langNum].send}</button>
+                //btn = <button className='review_Button' onClick={this.submitReview.bind(this)}>{l[langNum].send}</button>
+                btn = <button className='review_Button' onClick={this.checkSend.bind(this)}>{l[langNum].send}</button>
             }
             else {
                 btn = <button className='review_Button' onClick={this.submitReview.bind(this)} disabled>{l[langNum].send}</button>
             }
             this.setState({review_text: text, guide_Text: guide_text, postButton: btn}) 
-        }        
+        }      
     }
 
     render(){
         return(
-            <div id='container' className='content_List'>
+            <div id='container'>
                 <div className='backbtn'>
                     <div type='button' name='back' onClick={this.backPage.bind(this)}><img src={back} alt='' className='navImage'/></div>
                 </div>
-                <div className='shopD_NameText'>{l[langNum].writeReview}</div>
-                {this.state.guide_Title}
-                <div>
-                    <input type="text" id="titleText" placeholder={l[langNum].title} className="review_titleBox" onChange={this.textChanged.bind(this)}/>
+                <div className='review_List'>
+                    {this.state.checkWindow}
+                    <div className='shopD_NameText'>{l[langNum].writeReview}</div>
+                    {this.state.guide_Title}
+                    <div>
+                        <input type="text" id="titleText" placeholder={l[langNum].title} className="review_titleBox" onChange={this.textChanged.bind(this)}/>
+                    </div>
+                    {this.state.guide_Text}
+                    <div>
+                        <textarea type="text" id="reviewText" placeholder={l[langNum].review} className="review_textBox" onChange={this.textChanged.bind(this)}/>
+                    </div>
+                    {this.state.postButton}
                 </div>
-                {this.state.guide_Text}
-                <div>
-                    <textarea type="text" id="reviewText" placeholder={l[langNum].review} className="review_textBox" onChange={this.textChanged.bind(this)}/>
-                </div>
-                {this.state.postButton}
             </div>
         )
 

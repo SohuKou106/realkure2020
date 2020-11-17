@@ -1,10 +1,19 @@
-.review_List{
+.content_List{
     display: flex;
     flex-grow: 12;
     flex-direction: column;
     flex-basis: 0;
+    overflow-y: scroll;
 }
 
+.review_List{
+    position: relative;
+    display: flex;
+    flex-grow: 12;
+    flex-direction: column;
+    flex-basis: 0;
+    overflow-y: scroll;
+}
 
 .review_titleText{
     width: 40vw;
@@ -35,4 +44,33 @@
     width: 40%;
     background-color: #9bdff0;
     font-size: 4vh;
+}
+
+.review_CheckField{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    background-color: #00000044;
+}
+
+.review_CheckWindow{
+    margin: 50% auto;
+    width: 70vw;
+    height: 15vh;
+    background-color: white;
+    border: solid white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.review_CheckText{
+    font-size: 3vh;
+}
+
+.review_CheckButton{
+    margin: 20px;
+    font-size: 3vh;
 }

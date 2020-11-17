@@ -270,6 +270,8 @@ div.shop-None {
     max-width: 45vw;
     height: 5vh;
     white-space: normal;
+    word-wrap: break-all;
+    overflow-wrap: break-word;
 }
 
 .shopD_ReviewText{
@@ -281,6 +283,8 @@ div.shop-None {
     min-width: 45vw;
     height: 28vh;
     white-space: normal;
+    word-wrap: break-all;
+    overflow-wrap: break-word;
 }
 
 .shopD_Buttons {
