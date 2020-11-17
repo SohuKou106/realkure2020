@@ -21,7 +21,7 @@ import {Shop} from './Shop/Shop'
 import {MyPage} from './MyPage'
 import {Camera} from './Camera'
 import {Favorite} from './Favorite/Favorite'
-import {BeforePage, LMapStatus, ShopData} from './Utilities'
+import {BeforePage, LMapStatus, SearchText} from './Utilities'
 import firebase from "firebase";
 import config from './firebase-config'
 
@@ -67,6 +67,7 @@ class Home extends React.Component {
       sightseeing: 0,
       checked: [true, true, true, true, true],
       favId : new Favorite(new Array()),
+      searchText: new SearchText(null),
       mapStatus: new LMapStatus([34.244659, 132.557402], 15, [true, true, true, true, true]),
       before_page : new BeforePage(null, this.movePage.bind(this)),
       search_res: [],
@@ -144,7 +145,6 @@ class Home extends React.Component {
 
   render () {
     const {Component} = this.state
-
     var container
     if(this.state.loading){
       container = <div className='loading-container'>
@@ -162,6 +162,7 @@ class Home extends React.Component {
               sightseeing={this.state.sightseeing}
               checked={this.state.checked}
               favId={this.state.favId}
+              searchText={this.state.searchText}
               mapStatus={this.state.mapStatus}
               before_page={this.state.before_page}
               movePage={this.movePage.bind(this)}

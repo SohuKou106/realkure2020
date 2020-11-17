@@ -12,6 +12,7 @@ export class Search_Radio extends React.Component {
         }
         this.props.movePage(this.state)
         this.props.shop_list
+        this.props.searchText
     }
 
     componentWillMount(){
@@ -65,6 +66,11 @@ export class Search_Radio extends React.Component {
             }
         })        
         
+        var text = ""
+        for(var tag in tags){
+            text += " #" + tags[tag]
+        }
+        this.props.searchText.set(text)
         this.props.movePage({Component: Search_Result, search_res: search_res, type:"Tag"})
     }
 

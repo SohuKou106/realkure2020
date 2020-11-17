@@ -40,16 +40,16 @@ export class LMapStatus{
     set(center, zoom, checked){
         this.center = center
         this.zoom = zoom
-        this.checked = checked        
+        this.checked = checked
     }
 }
 
-//*******読み込んだお店の情報を保存*******
-export class ShopData{
-    constructor(shop_data){
-        this.shop_data = shop_data
+//*******検索した文字列，ハッシュタグ*******
+export class SearchText{
+    constructor(text){
+        this.text = text
     }
-    set(shop_data){
-        this.shop_data = shop_data
+    set(text){
+        this.text = text
     }
 }

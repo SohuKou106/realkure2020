@@ -15,6 +15,7 @@ export class Search_Result extends React.Component{
         this.state = {            
             shop_list: []
         }
+        this.props.searchText
         this.props.search_res
         this.props.type
         this.props.shopLocate
@@ -70,7 +71,7 @@ export class Search_Result extends React.Component{
                 <div className="backbtn">
                     <div type="button" name="back" onClick={this.backPage.bind(this)}><img src={back} alt="" className="navImage"/></div>
                 </div>
-                <div className="search_MenuText">{l[langNum].sResult}</div>
+                <div className="search_MenuText">{l[langNum].sResult + " : " + this.props.searchText.text}</div>
                 {noResText}
                 <div className="content_List">
                   <div className="fav_List">
