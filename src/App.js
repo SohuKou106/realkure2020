@@ -14,14 +14,14 @@ import LoadingLogo from './images/loading.gif'
 import MainLogo from './images/newlogo.png'
 import MapLogo from './images/map.png'
 import ShopLogo from './images/shop.png'
-import MyPageLogo from './images/mypage.png'
+import MyPageLogo from './images/setting.png'
 import classNames from 'classnames'
 import {LMap} from './LMap'
 import {Shop} from './Shop/Shop'
 import {MyPage} from './MyPage'
 import {Camera} from './Camera'
 import {Favorite} from './Favorite/Favorite'
-import {BeforePage, LMapStatus, SearchText} from './Utilities'
+import {BeforePage, Status} from './Utilities'
 import firebase from "firebase";
 import config from './firebase-config'
 
@@ -67,8 +67,7 @@ class Home extends React.Component {
       sightseeing: 0,
       checked: [true, true, true, true, true],
       favId : new Favorite(new Array()),
-      searchText: new SearchText(null),
-      mapStatus: new LMapStatus([34.244659, 132.557402], 15, [true, true, true, true, true]),
+      mapStatus: new Status([34.244659, 132.557402], 15, [true, true, true, true, true], null, 0),
       before_page : new BeforePage(null, this.movePage.bind(this)),
       search_res: [],
       review_id: 0,
@@ -154,7 +153,7 @@ class Home extends React.Component {
     else{
       container = 
         <div className="App">
-          <Header />
+          <Header func={this.bindFunc}/>
           <Component            
               shop_data={this.state.shop_data}
               shopLocate={this.bindShopLocate}
@@ -162,7 +161,6 @@ class Home extends React.Component {
               sightseeing={this.state.sightseeing}
               checked={this.state.checked}
               favId={this.state.favId}
-              searchText={this.state.searchText}
               mapStatus={this.state.mapStatus}
               before_page={this.state.before_page}
               movePage={this.movePage.bind(this)}
@@ -190,10 +188,14 @@ class Header extends React.Component {
     }
   }
 
+  imageTapped () {
+    this.props.func(0)
+  }
+
   render () {
     return (
         <header className="App-header">
-          <img src={MainLogo} alt="" className="header-logo"></img>
+          <img src={MainLogo} alt="" className="header-logo" onClick={this.imageTapped.bind(this)}></img>
         </header>
     )
   }

@@ -13,9 +13,11 @@ import {SideBar} from './SideBar'
 import {FavButton} from './Favorite/FavButton'
 import {l} from './Language'
 import {langNum} from './MyPage'
+import search from './images/search.png'
 import {Search} from './Search/Search'
 import {ShopDetail} from './Shop/ShopDetail'
-import search from './images/search.png'
+import help from './images/help.png'
+import {Help} from './Help'
 
 //import '@babel/polyfill';
 
@@ -111,7 +113,8 @@ export class LMap extends React.Component {
   }
 
   componentWillUnmount () {
-    clearInterval(this.getCurrentPosition) 
+    clearInterval(this.getCurrentPosition)
+    this.props.mapStatus.setMapStatus(this.state.position, this.state.zoom, this.state.checked)
   }
 
   getCurrentPosition () {
@@ -144,7 +147,7 @@ export class LMap extends React.Component {
   //サイドバーのチェックボタンが変更されたら呼び出される
   updateCheck(checked_Copy){
     if(checked_Copy.length > 0){
-      this.props.mapStatus.set(this.state.position, this.state.zoom, checked_Copy)
+      this.props.mapStatus.setMapStatus(this.state.position, this.state.zoom, checked_Copy)
       this.setState({checked:checked_Copy})
     }    
   }
@@ -183,7 +186,7 @@ export class LMap extends React.Component {
       holi: marker.holi,
       reg_holi: marker.reg_holi
     }
-    this.props.mapStatus.set(this.state.position, this.state.zoom, this.state.checked)
+    this.props.mapStatus.setMapStatus(this.state.position, this.state.zoom, this.state.checked)
     this.props.before_page.set("LMap")
     this.props.movePage({shop_data: shop_data, Component: ShopDetail})
   }
@@ -205,9 +208,13 @@ export class LMap extends React.Component {
   }
 
   movePage (){
-    this.props.mapStatus.set(this.state.position, this.state.zoom, this.state.checked)
+    this.props.mapStatus.setMapStatus(this.state.position, this.state.zoom, this.state.checked)
     this.props.before_page.set("LMap")
     this.props.movePage({Component: Search})
+  }
+
+  moveHelp (){
+    this.props.movePage({Component: Help})
   }
 
   render () {
@@ -262,9 +269,6 @@ export class LMap extends React.Component {
       }
     })
 
-    //サイドバーのオンオフを切り替えるボタン
-    var searchButton = <div type="button" name="search" onClick={this.movePage.bind(this)}><img src={search} alt="" className="navImage"/></div>
-
     //サイドバーを表示するかどうか決める
     var sidebar    
     if(this.state.menuShow == true){
@@ -313,9 +317,12 @@ export class LMap extends React.Component {
       }
     }
 
+    //<div className="menubtn">{searchButton}</div>
+        
     return (
       <div id='container'>
-        <div className="menubtn">{searchButton}</div>
+        <div className='menubtn' type="button" name="search" onClick={this.movePage.bind(this)}><img src={search} alt="" className="navImage"/></div>
+        <div className='helpbtn' type="button" name="search" onClick={this.moveHelp.bind(this)}><img src={help} alt="" className="navImage"/></div>
         <div className='sideBar'>{sidebar}</div>
         <Map ref='map'
              onClick={this.mapClicked.bind(this)}

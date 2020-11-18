@@ -15,7 +15,7 @@ export class ShopDetail extends React.Component{
             review_list: []
         }
         this.props.before_page
-        this.props.shop_data        
+        this.props.shop_data
         this.props.favId
         this.props.shopLocate
         this.props.firebaseRef

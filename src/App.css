@@ -79,6 +79,12 @@
   right: 20px;
 }
 
+.helpbtn{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
 .backbtn{
   position: absolute;
   top: 20px;
@@ -105,7 +111,7 @@ div.current{
 
 .navImage {
   width: 40%;
-  height: 40%;
+  height: auto;
   max-height: 55px;
   max-width: 55px;
 }
@@ -120,4 +126,52 @@ div.current{
   margin: 0 auto;
   display: flex;
   flex-direction: row;
+}
+
+.help_Table{
+  align-items: center;
+}
+
+.help_fontTitle{
+  width: 100vw;
+  font-size: 4vh;
+  font-weight: bold;
+  border-bottom: 3px solid #123a44;
+  color: #297f94;
+  margin: 5px 0 0 0;
+  text-align: center;
+}
+
+.help_fontName{
+  font-size: 3vh;
+  color: #2c89A0;
+  font-weight: bold;
+}
+
+.help_fontDesc{
+  font-size: 3vw;
+  font-weight: bold;
+  align-content: left;
+  margin: 0 20px 15px 20px;
+}
+
+.help_tab{
+  width: 40vw;
+  height: 8vh;
+  margin: 10px auto;
+  background-color: #5fbcd3;
+}
+
+.help_image{
+  width: 50%;
+  height: auto;
+  max-height: 55px;
+  max-width: 55px;
+  margin: auto;
+}
+
+.help_shopDImage{
+  width: 60%;
+  height: auto;
+  margin: auto;
 }

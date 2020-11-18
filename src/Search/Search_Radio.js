@@ -1,6 +1,6 @@
 import React from 'react'
 import './Search.css'
-import {radio_l, l, radio_lng} from '../Language'
+import {l, radio_lng} from '../Language'
 import {langNum} from '../MyPage'
 import {Search_Result} from './Search_Result'
 
@@ -10,14 +10,14 @@ export class Search_Radio extends React.Component {
         this.state = {
             radioCheck : []
         }
+        this.props.mapStatus
         this.props.movePage(this.state)
         this.props.shop_list
-        this.props.searchText
     }
 
     componentWillMount(){
         //ハッシュタグの数分の要素数を持つradioCheckを作っておく
-        var radio_langs = radio_l[langNum]
+        var radio_langs = radio_lng[langNum]
         var radio_Check = []
         for(var name in radio_langs){
             radio_Check.push(false)
@@ -25,20 +25,9 @@ export class Search_Radio extends React.Component {
         this.setState({radioCheck : radio_Check})
     }
 
-
     updateRadioState(e){
         //押されたボタンの箇所をTrueにしておく
         var check = this.state.radioCheck
-        /*var trueNum = 0
-        for(var radio in check){
-            if(radio === true){
-                trueNum += 1
-            }
-            if(trueNum === 3){
-
-            }
-        }*/
-
         const k = e.currentTarget.getAttribute("radio-num")
         check[k] = !check[k]
 
@@ -70,7 +59,7 @@ export class Search_Radio extends React.Component {
         for(var tag in tags){
             text += " #" + tags[tag]
         }
-        this.props.searchText.set(text)
+        this.props.mapStatus.setText(text)
         this.props.movePage({Component: Search_Result, search_res: search_res, type:"Tag"})
     }
 

@@ -31,25 +31,25 @@ export class BeforePage{
 }
 
 //*******LMapの中心，拡大情報を記憶しておく*******
-export class LMapStatus{
-    constructor(center, zoom, checked){
+export class Status{
+    constructor(center, zoom, checked, searchtext, tab_num){
+        this.center = center
+        this.zoom = zoom
+        this.checked = checked
+        this.searchtext = searchtext
+        this.tab_num = tab_num
+    }
+    setMapStatus(center, zoom, checked){
         this.center = center
         this.zoom = zoom
         this.checked = checked
     }
-    set(center, zoom, checked){
-        this.center = center
-        this.zoom = zoom
-        this.checked = checked
-    }
-}
 
-//*******検索した文字列，ハッシュタグ*******
-export class SearchText{
-    constructor(text){
-        this.text = text
+    setText(searchtext){
+        this.searchtext = searchtext
     }
-    set(text){
-        this.text = text
+
+    setTabNum(tab_num){
+        this.tab_num = tab_num
     }
 }

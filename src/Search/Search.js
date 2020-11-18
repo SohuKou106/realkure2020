@@ -27,8 +27,8 @@ export class Search extends React.Component {
             recPushed: false,
         }
         this.props.movePage(this.state)
+        this.props.mapStatus
         this.props.favId
-        this.props.searchText
         this.props.before_page
     }
 
@@ -216,7 +216,7 @@ export class Search extends React.Component {
           return shop
         }
       })
-      this.props.searchText.set(text)
+      this.props.mapStatus.setText(text)
       this.props.movePage({Component: Search_Result, search_res: search_res, type:"Text"})
     }
 
@@ -243,7 +243,7 @@ export class Search extends React.Component {
     render(){
         var searchTextButton = this.state.searchTextButton
 
-        var searchRadioBox = <Search_Radio movePage={this.props.movePage.bind(this)} shop_list={this.state.shop_list} searchText={this.props.searchText}/>
+        var searchRadioBox = <Search_Radio movePage={this.props.movePage.bind(this)} shop_list={this.state.shop_list} mapStatus={this.props.mapStatus}/>
         
         return (            
             <div id='container' className="content_List">

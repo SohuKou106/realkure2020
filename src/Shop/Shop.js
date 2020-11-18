@@ -19,35 +19,145 @@ export class Shop extends React.Component {
       shop_list: []
     }
     this.props.movePage(this.state)
+    this.props.mapStatus
     this.props.before_page
     this.props.firebaseRef
     this.props.posts
     this.props.loading
   }
+
   componentWillMount () {
+    var nav_copy = this.state.nav.slice()
+    var num = 0
+    for(var i = 0; i < 5; i++){
+      if(i == this.props.mapStatus.tab_num){
+        nav_copy[i] = true
+        num = i
+      }
+      else{
+        nav_copy[i] = false
+      }
+    }
+
     if(langNum == 0){
-      request
-      .get('/api/restaurant_ja')
-      .accept('application/json')
-      .end((err, res) => {
-        if (err) return
-        this.setState({shop_list: res.body.content})
-      })
+      switch(num){
+        case 0:
+          request
+          .get('/api/restaurant_ja')
+          .accept('application/json')
+          .end((err, res) => {
+            if (err) return
+            this.setState({shop_list: res.body.content, nav: nav_copy})
+          })
+          break
+        case 1:
+          request
+          .get('/api/cafe_ja')
+          .accept('application/json')
+          .end((err, res) => {
+            if (err) return
+            this.setState({shop_list: res.body.content, nav: nav_copy})
+          })
+          break
+        case 2:
+          request
+          .get('/api/tavern_ja')
+          .accept('application/json')
+          .end((err, res) => {
+            if (err) return
+            this.setState({shop_list: res.body.content, nav: nav_copy})
+          })
+          break
+        case 3:
+          request
+          .get('/api/hotel_ja')
+          .accept('application/json')
+          .end((err, res) => {
+            if (err) return
+            this.setState({shop_list: res.body.content, nav: nav_copy})
+          })
+          break
+        case 4:
+          request
+          .get('/api/other_ja')
+          .accept('application/json')
+          .end((err, res) => {
+            if (err) return
+            this.setState({shop_list: res.body.content, nav: nav_copy})
+          })
+          break
+        default:
+          request
+          .get('/api/restaurant_ja')
+          .accept('application/json')
+          .end((err, res) => {
+            if (err) return
+            this.setState({shop_list: res.body.content, nav: nav_copy})
+          })
+          break
+      }
     }
     else if(langNum == 1){
-      request
-      .get('/api/restaurant_en')
-      .accept('application/json')
-      .end((err, res) => {
-        if (err) return
-        this.setState({shop_list: res.body.content})
-      })
+      switch(num){
+        case 0:
+          request
+          .get('/api/restaurant_en')
+          .accept('application/json')
+          .end((err, res) => {
+            if (err) return
+            this.setState({shop_list: res.body.content, nav: nav_copy})
+          })
+          break
+        case 1:
+          request
+          .get('/api/cafe_en')
+          .accept('application/json')
+          .end((err, res) => {
+            if (err) return
+            this.setState({shop_list: res.body.content, nav: nav_copy})
+          })
+          break
+        case 2:
+          request
+          .get('/api/tavern_en')
+          .accept('application/json')
+          .end((err, res) => {
+            if (err) return
+            this.setState({shop_list: res.body.content, nav: nav_copy})
+          })
+          break
+        case 3:
+          request
+          .get('/api/hotel_en')
+          .accept('application/json')
+          .end((err, res) => {
+            if (err) return
+            this.setState({shop_list: res.body.content, nav: nav_copy})
+          })
+          break
+        case 4:
+          request
+          .get('/api/other_en')
+          .accept('application/json')
+          .end((err, res) => {
+            if (err) return
+            this.setState({shop_list: res.body.content, nav: nav_copy})
+          })
+          break
+        default:
+          request
+          .get('/api/restaurant_en')
+          .accept('application/json')
+          .end((err, res) => {
+            if (err) return
+            this.setState({shop_list: res.body.content, nav: nav_copy})
+          })
+          break
+      }
     }
   }
   
   shopDetail (e) {
-    console.log("Shop")
-    console.log(e)
     const shop_data = {
       lat: e.latitude,
       lng: e.longitude,
@@ -63,7 +173,7 @@ export class Shop extends React.Component {
       holi: e.hours_holiday,
       reg_holi: e.regular_holiday,
     }
-    //console.log(shop_data)    
+    //console.log(shop_data)
     this.props.before_page.set("Shop")
     this.props.movePage({shop_data: shop_data, Component: ShopDetail})
   }
@@ -79,6 +189,7 @@ export class Shop extends React.Component {
       }
     }
     this.setState({nav: navCopy, shop_list: []})
+    this.props.mapStatus.setTabNum(k)
     if(langNum == 0){
       switch (k) {
         case 0:
